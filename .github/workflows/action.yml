@@ -1,0 +1,35 @@
+name: GitSpy CI
+
+on:
+  push:
+    branches: [develop, main]
+    paths-ignore:
+      - 'README.md'
+  pull_request:
+    branches: [develop]
+    paths-ignore:
+      - 'README.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Eslint
+        run: yarn lint
+      - name: Test Coverage
+        run: yarn test:coverage
+      - name: Build
+        run: yarn build
