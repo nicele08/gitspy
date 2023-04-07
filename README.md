@@ -47,8 +47,8 @@ To run GitSpy, follow these steps:
 2. Create a `.env.local` file in the root directory of the project.
 3. Create a `.env.local` file by copying and renaming the .env.example file: `cp .env.example .env.local`
 3. Update the values in the `.env.local` file, replacing `<your-access-token>` with your personal access token: `VITE_REACT_APP_GITHUB_API_TOKEN=<your-access-token>`
-4. Run the application: `yarn start`
-5. Open [http://localhost:3000](http://localhost:3000) in a web browser.
+4. Run the application: `yarn dev`
+5. Open [http://localhost:$PORT](http://localhost:$PORT) in a web browser.
 
 ## API Documentation
 
