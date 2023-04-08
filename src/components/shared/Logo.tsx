@@ -5,6 +5,8 @@ const Logo = ({ className = '', ...props }) => {
       width="48"
       height="48"
       viewBox="0 0 48 48"
+      className={className}
+      {...props}
     >
       <path
         fill="#1f2937"
