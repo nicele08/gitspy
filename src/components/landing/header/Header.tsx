@@ -2,17 +2,16 @@ import { NavLink } from 'react-router-dom';
 
 import Logo from '@/components/shared/Logo';
 import Constants from '@/utils/constants';
+import SideMenu from '@/components/shared/menu/SideMenu';
 
 const Header = () => {
   return (
     <header className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto w-full">
-      <NavLink
-        to="/"
-        className="dark:bg-gray-600 bg-gray-200 rounded-full p-1"
-      >
+      <div className="flex items-center">
+        <SideMenu />
         <Logo />
-      </NavLink>
-      <nav className="mr-6 flex justify-end items-center space-x-6">
+      </div>
+      <nav className="mr-3 lg:mr-6 hidden md:flex justify-end items-center space-x-6">
         {Constants.publicMenu.map(item => (
           <NavLink
             to={item.href}
