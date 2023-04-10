@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 
 import MainLayout from '@/components/layouts/MainLayout';
 import Login from '@/components/login/Login';
@@ -8,7 +8,6 @@ import Secure from '@/utils/storage/secureLs';
 
 const LoginPage = ({ authenticated = false }) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const code = searchParams.get('code');
   const handleLogin = useRef(() => {});
@@ -33,7 +32,7 @@ const LoginPage = ({ authenticated = false }) => {
             tokenTimestamp: Date.now(),
           }),
         );
-        navigate('/');
+        window.location.href = '/';
       }
       if (refreshToken) {
         Secure.setGithubRefreshData(

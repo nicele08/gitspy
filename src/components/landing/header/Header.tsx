@@ -1,12 +1,16 @@
 import { NavLink } from 'react-router-dom';
 
+import ProfileAvatar from './ProfileAvatar';
+
 import Logo from '@/components/shared/Logo';
 import Constants from '@/utils/constants';
 import SideMenu from '@/components/shared/menu/SideMenu';
 import LoginWithGithub from '@/components/shared/buttons/LoginWithGithub';
 import { redirectToGitHub } from '@/services/auth/gitHubAuth';
+import { useAuth } from '@/components/contexts/AuthContext';
 
 const Header = () => {
+  const { profile } = useAuth();
   return (
     <header className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto w-full">
       <div className="flex items-center">
@@ -41,7 +45,11 @@ const Header = () => {
           </NavLink>
         ))}
       </nav>
-      <LoginWithGithub onClick={redirectToGitHub} />
+      {profile ? (
+        <ProfileAvatar profile={profile} />
+      ) : (
+        <LoginWithGithub onClick={redirectToGitHub} />
+      )}
     </header>
   );
 };

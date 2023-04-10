@@ -5,6 +5,8 @@ import RepositoryPage from '../pages/RepositoryPage';
 import ReportPage from '../pages/ReportPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
+import LogoutPage from '@/pages/LogoutPage';
+
 const PrivateRoute = ({ authenticated = false }) => {
   if (!authenticated) {
     return <Navigate to="/login" />;
@@ -12,6 +14,7 @@ const PrivateRoute = ({ authenticated = false }) => {
 
   return (
     <Routes>
+      <Route path="/logout" element={<LogoutPage />} />
       <Route path="/organizations" element={<OrganizationPage />} />
       <Route
         path="/organizations/:org/repositories"

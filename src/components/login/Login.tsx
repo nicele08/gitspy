@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, FormEvent, ChangeEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Logo from '../shared/Logo';
 import LoginWithGithub from '../shared/buttons/LoginWithGithub';
@@ -12,7 +12,6 @@ const Login = () => {
     username: '',
     password: '',
   });
-  const navigate = useNavigate();
 
   const handleChangeInput = (
     event: ChangeEvent<HTMLInputElement>,
@@ -25,7 +24,6 @@ const Login = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // navigate(`/${credentials.username}`);
   };
 
   return (
