@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import Logo from '@/components/shared/Logo';
 import Constants from '@/utils/constants';
 import SideMenu from '@/components/shared/menu/SideMenu';
+import LoginWithGithub from '@/components/shared/buttons/LoginWithGithub';
+import { redirectToGitHub } from '@/services/auth/gitHubAuth';
 
 const Header = () => {
   return (
@@ -39,12 +41,7 @@ const Header = () => {
           </NavLink>
         ))}
       </nav>
-      <button
-        type="button"
-        className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg dark:bg-blue-800 dark:hover:bg-blue-600"
-      >
-        Log in with Github
-      </button>
+      <LoginWithGithub onClick={redirectToGitHub} />
     </header>
   );
 };

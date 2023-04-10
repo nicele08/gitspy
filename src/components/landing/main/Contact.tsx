@@ -34,7 +34,7 @@ const Contact = () => {
               value={name}
               onChange={e => setName(e.target.value)}
               required
-              autoComplete="none"
+              aria-autocomplete="none"
             />
           </div>
           <div className="mb-6">
@@ -52,7 +52,7 @@ const Contact = () => {
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
-              autoComplete="none"
+              aria-autocomplete="none"
             />
           </div>
           <div className="mb-6">
@@ -70,7 +70,7 @@ const Contact = () => {
               value={message}
               onChange={e => setMessage(e.target.value)}
               required
-              autoComplete="none"
+              aria-autocomplete="none"
             />
           </div>
           <div className="flex justify-end">

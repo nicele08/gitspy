@@ -9,16 +9,20 @@ import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import ScrollToTop from './components/shared/ScrollToTop';
 import LandingPage from './pages/LandingPage';
+import { isAuthWithGitHub } from './services/auth/gitHubAuth';
 
 const App = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const authenticated = isAuthWithGitHub();
 
   return (
     <Router>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={<LoginPage authenticated={authenticated} />}
+        />
         <Route
           path="/*"
           element={<PrivateRoute authenticated={authenticated} />}
