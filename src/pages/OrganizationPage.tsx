@@ -1,7 +1,7 @@
-import React from 'react';
+import DashboardLayout from '@/components/layouts/DashboardLayout';
 
 const OrganizationPage = () => {
-  return <div>OrganizationPage</div>;
+  return <DashboardLayout>OrganizationPage</DashboardLayout>;
 };
 
 export default OrganizationPage;

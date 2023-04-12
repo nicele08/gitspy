@@ -2,4 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 yarn lint:fix
+git add .
 yarn test:coverage

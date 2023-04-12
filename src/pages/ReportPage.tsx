@@ -1,7 +1,20 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import DashboardLayout from '@/components/layouts/DashboardLayout';
+import ComingSoonCard from '@/components/shared/others/ComingSoonCard';
 
 const ReportPage = () => {
-  return <div>ReportPage</div>;
+  const navigate = useNavigate();
+  return (
+    <DashboardLayout
+      onSearch={q => {
+        // TODO: Implement search
+        navigate(`/repositories?q=${q}`);
+      }}
+    >
+      <ComingSoonCard />
+    </DashboardLayout>
+  );
 };
 
 export default ReportPage;
