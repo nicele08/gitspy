@@ -14,63 +14,60 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-white dark:bg-gray-800 py-16 w-full"
+      className="bg-white  transition-all duration-300 dark:bg-gray-800 py-16 w-full"
     >
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-8">Contact Us</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label
-              className="block text-gray-700 dark:text-white font-bold mb-2"
+              className="block text-gray-700  transition-all duration-300 dark:text-white font-bold mb-2"
               htmlFor="name"
             >
               Name
             </label>
             <input
-              className="appearance-none border border-gray-400 dark:border-white dark:bg-black bg-white rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border border-gray-400  transition-all duration-300 dark:border-white  transition-all duration-300 dark:bg-black bg-white rounded w-full py-2 px-3 text-gray-700  transition-all duration-300 dark:text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               type="text"
               placeholder="Your name"
               value={name}
               onChange={e => setName(e.target.value)}
               required
-              aria-autocomplete="none"
             />
           </div>
           <div className="mb-6">
             <label
-              className="block text-gray-700 dark:text-white font-bold mb-2"
+              className="block text-gray-700  transition-all duration-300 dark:text-white font-bold mb-2"
               htmlFor="email"
             >
               Email
             </label>
             <input
-              className="appearance-none border border-gray-400 dark:border-white dark:bg-black bg-white rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border border-gray-400  transition-all duration-300 dark:border-white  transition-all duration-300 dark:bg-black bg-white rounded w-full py-2 px-3 text-gray-700  transition-all duration-300 dark:text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
               placeholder="Your email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
-              aria-autocomplete="none"
             />
           </div>
           <div className="mb-6">
             <label
-              className="block text-gray-700 dark:text-white font-bold mb-2"
+              className="block text-gray-700  transition-all duration-300 dark:text-white font-bold mb-2"
               htmlFor="message"
             >
               Message
             </label>
             <textarea
               rows={3}
-              className="resize-none appearance-none border border-gray-400 dark:border-white dark:bg-black bg-white rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+              className="resize-none appearance-none border border-gray-400  transition-all duration-300 dark:border-white  transition-all duration-300 dark:bg-black bg-white rounded w-full py-2 px-3 text-gray-700  transition-all duration-300 dark:text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
               id="message"
               placeholder="Your message"
               value={message}
               onChange={e => setMessage(e.target.value)}
               required
-              aria-autocomplete="none"
             />
           </div>
           <div className="flex justify-end">

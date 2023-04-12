@@ -1,3 +1,4 @@
+import DataLoader from './DataLoader';
 import SkeletonElement from './SkeletonElement';
 
 import MainLayout from '@/components/layouts/MainLayout';
@@ -14,21 +15,7 @@ const GitSpyLoader = () => {
           </div>
         </div>
         <SkeletonElement className="h-64 w-full rounded" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Array.from({ length: 12 }, (_, index) => (
-            <div
-              key={index}
-              className="rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-800 p-4 space-y-4"
-            >
-              <SkeletonElement className="h-4 rounded w-full" />
-              <SkeletonElement className="h-20 rounded w-full" />
-              <div className="space-y-2">
-                <SkeletonElement className="h-4 rounded w-1/2" />
-                <SkeletonElement className="h-4 rounded w-1/4" />
-              </div>
-            </div>
-          ))}
-        </div>
+        <DataLoader />
       </div>
     </MainLayout>
   );

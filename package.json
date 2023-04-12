@@ -14,16 +14,9 @@
     "lint": "eslint . --ignore-path .eslintignore",
     "lint:fix": "yarn lint --fix"
   },
-  "lint-staged": {
-    "src/**/*.{css,md,html,json,js,jsx,ts,tsx}": [
-      "yarn lint:fix",
-      "git add"
-    ]
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn coverage"
+      "pre-commit": "yarn lint:fix && git add . && yarn test"
     }
   },
   "dependencies": {

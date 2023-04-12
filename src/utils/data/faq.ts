@@ -11,7 +11,7 @@ export const faqs = [
   {
     question: 'How do I search for repositories on GitSpy?',
     answer:
-      'To search for repositories, simply enter a search term in the search bar on the home page and hit enter. You can then filter your results by language and sort them by various criteria.',
+      'To search for repositories, simply enter a search term in the search bar on the dashboard page and hit enter. You can then filter your results by language and sort them by various criteria.',
   },
   {
     question: 'How do I save a repository as a favorite?',

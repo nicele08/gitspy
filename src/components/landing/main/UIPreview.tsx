@@ -4,14 +4,14 @@ const UIPreview = () => {
   return (
     <section
       id="offers"
-      className="bg-gradient-to-br from-blue-600 to-indigo-700 dark:from-gray-800 dark:to-gray-900 py-16 w-full px-8 flex flex-col items-center"
+      className="bg-gradient-to-br from-blue-600 to-indigo-700  transition-all duration-300 dark:from-gray-800  transition-all duration-300 dark:to-gray-900 py-16 w-full px-8 flex flex-col items-center"
     >
-      <h2 className="text-3xl font-bold text-white dark:text-gray-100 text-center mb-8 max-w-4xl mx-auto w-full">
+      <h2 className="text-3xl font-bold text-white  transition-all duration-300 dark:text-gray-100 text-center mb-8 max-w-4xl mx-auto w-full">
         See What GitSpy Has to Offer
       </h2>
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl">
         <div className="max-w-md mx-auto md:mx-0 md:mr-16 mb-8 md:mb-0">
-          <div className="text-white dark:text-gray-100 text-center">
+          <div className="text-white  transition-all duration-300 dark:text-gray-100 text-center">
             <FiSearch
               size={64}
               className="inline-block mb-4 animate-pulse"
@@ -25,7 +25,7 @@ const UIPreview = () => {
           </div>
         </div>
         <div className="max-w-md mx-auto md:mx-0 md:mr-16 mb-8 md:mb-0">
-          <div className="text-white dark:text-gray-100 text-center">
+          <div className="text-white  transition-all duration-300 dark:text-gray-100 text-center">
             <FiCode
               size={64}
               className="inline-block mb-4 animate-pulse"
@@ -37,7 +37,7 @@ const UIPreview = () => {
           </div>
         </div>
         <div className="max-w-md mx-auto md:mx-0">
-          <div className="text-white dark:text-gray-100 text-center">
+          <div className="text-white  transition-all duration-300 dark:text-gray-100 text-center">
             <FiStar
               size={64}
               className="inline-block mb-4 animate-pulse"

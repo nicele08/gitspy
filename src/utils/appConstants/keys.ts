@@ -8,6 +8,18 @@ const Keys = {
   APP_API_URL: import.meta.env.VITE_APP_API_URL,
   GITHUB_API_URL:
     import.meta.env.VITE_GITHUB_API_URL || 'https://api.github.com',
+
+  APP_THEME_KEY:
+    import.meta.env.VITE_APP_THEME_KEY || 'SLDKLK2329837489E',
+
+  USER_DATA: import.meta.env.VITE_USER_DATA || 'KLSKDLKUOI982332SD',
+
+  REDIRECT_KEY:
+    import.meta.env.VITE_REDIRECT_KEY ||
+    'KLSKDklksdurro2839OI982332SD',
+
+  RESIZE_NAVBAR:
+    import.meta.env.VITE_RESIZE_NAVBAR || 'O2OIOI4833899',
 };
 
 export default Keys;

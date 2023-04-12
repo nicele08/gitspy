@@ -2,7 +2,7 @@ import { FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-8 w-full">
+    <footer className="bg-gray-100  transition-all duration-300 dark:bg-gray-900 text-gray-800  transition-all duration-300 dark:text-gray-100 py-8 w-full">
       <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
           <p className="text-lg font-semibold">
@@ -16,7 +16,7 @@ const Footer = () => {
               className="mr-6"
             >
               <FaTwitter
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-300"
+                className="text-gray-600  transition-all duration-300 dark:text-gray-400 hover:text-gray-800  transition-all duration-300 dark:hover:text-gray-100 transition-colors duration-300"
                 size={24}
               />
             </a>
@@ -26,7 +26,7 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <FaLinkedin
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-300"
+                className="text-gray-600  transition-all duration-300 dark:text-gray-400 hover:text-gray-800  transition-all duration-300 dark:hover:text-gray-100 transition-colors duration-300"
                 size={24}
               />
             </a>

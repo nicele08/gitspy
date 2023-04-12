@@ -2,15 +2,18 @@ import { teamMembers } from '@/utils/data/team';
 
 const TeamSection = () => {
   return (
-    <section id="team" className="bg-white dark:bg-gray-800 w-full">
+    <section
+      id="team"
+      className="bg-white  transition-all duration-300 dark:bg-gray-800 w-full"
+    >
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+        <h2 className="text-3xl font-bold text-gray-900  transition-all duration-300 dark:text-white mb-8">
           Meet the Team
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map(member => (
             <div
-              className="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg p-6"
+              className="bg-gray-100  transition-all duration-300 dark:bg-gray-700 rounded-lg shadow-lg p-6"
               key={member.name}
             >
               <div className="flex items-center mb-6">
@@ -20,13 +23,13 @@ const TeamSection = () => {
                   alt={member.name}
                 />
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                  <h3 className="text-lg font-medium text-gray-900  transition-all duration-300 dark:text-white">
                     {member.name}
                   </h3>
                   <p className="text-gray-500">{member.title}</p>
                 </div>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <p className="text-gray-600  transition-all duration-300 dark:text-gray-300 mb-4">
                 {member.bio}
               </p>
               <div className="flex justify-between">
@@ -40,7 +43,7 @@ const TeamSection = () => {
                       key={social.url}
                     >
                       <Icon
-                        className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                        className="text-gray-500  dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                         size={24}
                       />
                     </a>

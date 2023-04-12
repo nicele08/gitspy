@@ -36,20 +36,20 @@ const Login = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col max-w-sm w-full bg-white dark:bg-gray-950 rounded-lg shadow-md p-8"
+        className="flex flex-col max-w-sm w-full bg-white  transition-all duration-300 dark:bg-gray-950 rounded-lg shadow-md p-8"
       >
         <h2 className="text-2xl font-bold mb-4 text-center">
           Sign in to GitSpy
         </h2>
         <LoginWithGithub onClick={redirectToGitHub} />
         <div className="flex items-center justify-center my-4">
-          <div className="border-b w-full border-gray-300 dark:border-gray-700" />
-          <div className="text-gray-500 dark:text-gray-400 mx-2">
+          <div className="border-b w-full border-gray-300  transition-all duration-300 dark:border-gray-700" />
+          <div className="text-gray-500  transition-all duration-300 dark:text-gray-400 mx-2">
             OR
           </div>
-          <div className="border-b w-full border-gray-300 dark:border-gray-700" />
+          <div className="border-b w-full border-gray-300  transition-all duration-300 dark:border-gray-700" />
         </div>
-        <p className="text-gray-500 dark:text-gray-400 text-xs mb-4">
+        <p className="text-gray-500  transition-all duration-300 dark:text-gray-400 text-xs mb-4">
           Enter your GitSpy credentials.
         </p>
         <div className="mb-4">
@@ -62,9 +62,8 @@ const Login = () => {
             name="username"
             value={credentials.username}
             onChange={handleChangeInput}
-            className="w-full border border-gray-300 outline-none p-2 rounded-lg dark:bg-slate-800 dark:border-slate-900"
+            className="w-full border border-gray-300 outline-none p-2 rounded-lg  transition-all duration-300 dark:bg-slate-800 dark:border-slate-900"
             required
-            aria-autocomplete="none"
           />
         </div>
         <div className="mb-4">
@@ -77,14 +76,13 @@ const Login = () => {
             name="password"
             value={credentials.password}
             onChange={handleChangeInput}
-            className="w-full border border-gray-300 outline-none p-2 rounded-lg dark:bg-slate-800 dark:border-slate-900"
+            className="w-full border border-gray-300 outline-none p-2 rounded-lg  transition-all duration-300 dark:bg-slate-800 dark:border-slate-900"
             required
-            aria-autocomplete="none"
           />
         </div>
         <button
           type="submit"
-          className="mt-4 opacity-70 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg dark:bg-blue-800 dark:hover:bg-blue-600"
+          className="mt-4 opacity-70 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg  transition-all duration-300 dark:bg-blue-800 dark:hover:bg-blue-600"
         >
           Sign in
         </button>

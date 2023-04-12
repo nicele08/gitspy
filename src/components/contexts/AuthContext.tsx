@@ -4,13 +4,19 @@ import {
   createContext,
   useContext,
   ReactNode,
+  useEffect,
+  useRef,
 } from 'react';
 
 import { IProfile } from '@/types/user/profile';
+import { isAuthWithGitHub } from '@/services/auth/gitHubAuth';
+import Secure from '@/utils/storage/secureLs';
+import Keys from '@/utils/appConstants/keys';
+import { useGitSWRMutation } from '@/services/fetcher/github';
 
 interface IAuth {
   profile: IProfile | null;
-  setProfile: React.Dispatch<React.SetStateAction<null>>;
+  setProfile: React.Dispatch<React.SetStateAction<IProfile | null>>;
 }
 
 export const defaultValue: Readonly<IAuth> = {
@@ -28,7 +34,34 @@ interface IAuthProvider {
 }
 
 const AuthProvider = ({ children }: IAuthProvider) => {
-  const [profile, setProfile] = useState(null);
+  const userJSONData = Secure.get(Keys.USER_DATA);
+  const userData = userJSONData ? JSON.parse(userJSONData) : null;
+  const [profile, setProfile] = useState<IProfile | null>(userData);
+  const { data: user, trigger } = useGitSWRMutation('/user');
+
+  const syncAuth = useRef(() => {});
+  syncAuth.current = () => {
+    if (isAuthWithGitHub()) {
+      if (!profile) {
+        trigger();
+      }
+    } else {
+      Secure.remove(Keys.USER_DATA);
+      Secure.removeGithubAccessData();
+      setProfile(null);
+    }
+  };
+
+  useEffect(() => {
+    syncAuth.current();
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      setProfile(user);
+      Secure.set(Keys.USER_DATA, JSON.stringify(user));
+    }
+  }, [user]);
 
   const value = useMemo(() => {
     return {

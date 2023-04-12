@@ -1,14 +1,23 @@
-import { useEffect, useRef } from 'react';
-import { Navigate, useLocation } from 'react-router';
+import { useEffect, useRef, useState } from 'react';
+import { Navigate } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 
 import MainLayout from '@/components/layouts/MainLayout';
 import Login from '@/components/login/Login';
-import { getGitHubToken } from '@/services/auth/gitHubAuth';
+import {
+  getGitHubToken,
+  isAuthWithGitHub,
+} from '@/services/auth/gitHubAuth';
 import Secure from '@/utils/storage/secureLs';
+import { useAuth } from '@/components/contexts/AuthContext';
+import GitSpyLoader from '@/components/shared/skeleton/GitSpyLoader';
+import API from '@/services/api/api';
+import Keys from '@/utils/appConstants/keys';
 
-const LoginPage = ({ authenticated = false }) => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+const LoginPage = () => {
+  const [loading, setLoading] = useState(isAuthWithGitHub());
+  const { profile, setProfile } = useAuth();
+  const [searchParams] = useSearchParams();
   const code = searchParams.get('code');
   const handleLogin = useRef(() => {});
   handleLogin.current = async () => {
@@ -16,6 +25,7 @@ const LoginPage = ({ authenticated = false }) => {
       return;
     }
     try {
+      setLoading(true);
       const { data } = await getGitHubToken(code);
       const {
         access_token: accessToken,
@@ -32,8 +42,24 @@ const LoginPage = ({ authenticated = false }) => {
             tokenTimestamp: Date.now(),
           }),
         );
-        window.location.href = '/';
+        const { data: profileData } = await API.github.get('/user', {
+          headers: {
+            Accept: 'application/vnd.github+json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        if (profileData) {
+          setProfile(profileData);
+          Secure.set(Keys.USER_DATA, JSON.stringify(profileData));
+          const redirectPathname = Secure.get(Keys.REDIRECT_KEY);
+          if (redirectPathname) {
+            Secure.remove(Keys.REDIRECT_KEY);
+          }
+          window.location.href =
+            redirectPathname || `/${profileData.login}`;
+        }
       }
+
       if (refreshToken) {
         Secure.setGithubRefreshData(
           JSON.stringify({
@@ -45,6 +71,8 @@ const LoginPage = ({ authenticated = false }) => {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -54,8 +82,17 @@ const LoginPage = ({ authenticated = false }) => {
     }
   }, [code]);
 
-  if (authenticated) {
-    return <Navigate to="/" />;
+  if (profile) {
+    const redirectPathname = Secure.get(Keys.REDIRECT_KEY);
+    if (redirectPathname) {
+      Secure.remove(Keys.REDIRECT_KEY);
+      return <Navigate to={redirectPathname} replace />;
+    }
+    return <Navigate to={`/${profile.login}`} replace />;
+  }
+
+  if (loading) {
+    return <GitSpyLoader />;
   }
 
   return (

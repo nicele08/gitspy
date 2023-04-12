@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+import APIHeaders from './headers';
+
 import Keys from '@/utils/appConstants/keys';
-import Secure from '@/utils/storage/secureLs';
 
 const API = {
   default: axios.create({
@@ -13,12 +14,7 @@ const API = {
   }),
   github: axios.create({
     baseURL: Keys.GITHUB_API_URL,
-    headers: {
-      Accept: 'application/vnd.github+json',
-      Authorization: `Bearer ${
-        Secure.getGithubAccessData()?.accessToken
-      }`,
-    },
+    headers: APIHeaders.github,
   }),
 };
 

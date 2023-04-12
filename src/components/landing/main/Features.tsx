@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 
 import Constants from '@/utils/constants';
+import { useAuth } from '@/components/contexts/AuthContext';
 
 const Features = () => {
+  const { profile } = useAuth();
   return (
     <div
       id="features"
-      className="w-full px-8 flex flex-col items-center py-16 bg-gradient-to-r dark:from-gray-900 dark:to-gray-950 from-gray-200 to-gray-300"
+      className="w-full px-8 flex flex-col items-center py-16 bg-gradient-to-r dark:from-gray-900  transition-all duration-300 dark:to-gray-950 from-gray-200 to-gray-300"
     >
       <h2 className="text-3xl font-bold max-w-4xl mx-auto w-full">
         Unlock the Power of Git with GitSpy&apos;s Robust Features
@@ -26,8 +28,8 @@ const Features = () => {
       </div>
 
       <Link
-        to="/login"
-        className="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg dark:bg-blue-800 dark:hover:bg-blue-600"
+        to={profile ? `/${profile.login}` : '/login'}
+        className="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg dark:bg-blue-800  transition-all duration-300 dark:hover:bg-blue-600"
       >
         Get started
       </Link>

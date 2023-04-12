@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 const Logo = ({
-  className = 'dark:bg-gray-600 bg-gray-200 rounded-full p-1',
+  className = 'transition-all duration-300 dark:bg-gray-600 bg-gray-200 rounded-full p-1',
 }) => {
   return (
     <NavLink to="/" className={className}>

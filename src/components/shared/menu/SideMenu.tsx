@@ -35,7 +35,7 @@ const SideMenu = ({ navItems = Constants.publicMenu }) => {
       <button
         type="button"
         ref={trigger}
-        className="md:hidden dark:text-white mr-2"
+        className="md:hidden  transition-all duration-300 dark:text-white mr-2"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         <FaBars size={32} />
@@ -58,8 +58,8 @@ const SideMenu = ({ navItems = Constants.publicMenu }) => {
               className={({ isActive }) =>
                 `cursor-pointer uppercase px-10 py-3 ${
                   isActive
-                    ? 'text-gray-800 dark:text-white font-bold'
-                    : 'text-gray-600 dark:text-gray-200 font-medium'
+                    ? 'text-gray-800  transition-all duration-300 dark:text-white font-bold'
+                    : 'text-gray-600  transition-all duration-300 dark:text-gray-200 font-medium'
                 }`
               }
               onClick={event => {
@@ -84,4 +84,4 @@ const SideMenu = ({ navItems = Constants.publicMenu }) => {
   );
 };
 
-export default SideMenu;
+export default React.memo(SideMenu);

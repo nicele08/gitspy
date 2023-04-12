@@ -1,4 +1,5 @@
 export interface IProfile {
+  blog?: string;
   avatar_url?: string;
   bio?: string;
   company?: string;
