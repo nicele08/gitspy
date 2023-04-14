@@ -1,12 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-
 import DashboardLayout from '@/components/layouts/DashboardLayout';
 import { useGitFetcher } from '@/services/fetcher/github';
 import DataLayout from '@/components/layouts/DataLayout';
 import OrganizationList from '@/components/organization/OrganizationList';
 
 const OrganizationsPage = () => {
-  const navigate = useNavigate();
   const {
     data: orgs,
     isLoading: loadingOrg,

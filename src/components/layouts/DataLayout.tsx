@@ -20,12 +20,11 @@ const DataLayout = ({
     return <div className="flex flex-col">{loader}</div>;
   }
   if (isError) {
-    const error =
-      isError.response?.data || isError?.message || isError;
+    const error = isError.response?.data || isError;
     return (
       <div className="flex flex-col p-4 w-2/3 md:1/2 lg:w-1/3 mx-auto">
         <p className="p-3 bg-red-500 text-white rounded-lg text-center justify-center items-center flex flex-wrap">
-          {error?.message || 'Something went wrong'}{' '}
+          {error?.message || error?.error || 'Something went wrong'}{' '}
           <button
             type="button"
             onClick={onReloadPage}

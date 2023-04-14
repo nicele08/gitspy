@@ -25,3 +25,6 @@ dist-ssr
 
 # testing
 /coverage
+
+# __snapshots__
+/**/*/__snapshots__

@@ -26,11 +26,7 @@ const ProfilePage = () => {
   } = useGitFetcher(`/user/orgs?per_page=6&page=1`);
 
   return (
-    <DashboardLayout
-      onSearch={q => {
-        navigate(`/repositories?q=${q}`);
-      }}
-    >
+    <DashboardLayout>
       <Overview profile={profile} />
       <div className="flex flex-col py-6">
         <div className="mb-6 flex items-center space-x-3 justify-between">
