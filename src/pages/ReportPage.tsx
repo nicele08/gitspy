@@ -4,14 +4,8 @@ import DashboardLayout from '@/components/layouts/DashboardLayout';
 import ComingSoonCard from '@/components/shared/others/ComingSoonCard';
 
 const ReportPage = () => {
-  const navigate = useNavigate();
   return (
-    <DashboardLayout
-      onSearch={q => {
-        // TODO: Implement search
-        navigate(`/repositories?q=${q}`);
-      }}
-    >
+    <DashboardLayout>
       <ComingSoonCard />
     </DashboardLayout>
   );

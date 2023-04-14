@@ -31,23 +31,27 @@ export const publicMenu = [
 export const dashboardMenu = [
   {
     name: 'Dashboard',
-    href: '/dashboard',
+    href: '/',
     Icon: MdDashboard,
+    isPrefix: true,
   },
   {
     name: 'Repositories',
     Icon: FiCode,
     href: '/repositories',
+    isPrefix: true,
   },
   {
     name: 'Organizations',
     Icon: FiUsers,
     href: '/organizations',
+    isPrefix: true,
   },
   {
     name: 'Report',
     Icon: MdReport,
     href: '/report',
+    isPrefix: true,
   },
   {
     name: 'Logout',

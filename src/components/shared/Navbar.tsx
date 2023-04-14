@@ -8,7 +8,7 @@ import { useAuth } from '@/components/contexts/AuthContext';
 import ToggleTheme from '@/components/shared/ToggleTheme';
 import Constants from '@/utils/constants';
 
-const Navbar = ({ onSearch = (search: string) => {} }) => {
+const Navbar = () => {
   const { profile } = useAuth();
   let navigationItems = Constants.dashboardMenu;
 
@@ -31,7 +31,7 @@ const Navbar = ({ onSearch = (search: string) => {} }) => {
           <Logo />
         </div>
         <div className="flex flex-grow">
-          <SearchBar onSubmit={onSearch} />
+          <SearchBar />
         </div>
         <div className="flex items-center space-x-2 md:space-x-3 ml-2 md:ml-4 shrink-0">
           <ToggleTheme />

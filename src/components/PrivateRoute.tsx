@@ -30,14 +30,19 @@ const PrivateRoute = () => {
   return (
     <Routes>
       <Route path="/logout" element={<LogoutPage />} />
-      <Route path="/organizations" element={<OrganizationsPage />} />
-      <Route path="/repositories" element={<RepositoriesPage />} />
-      <Route path="/report" element={<ReportPage />} />
+
       <Route path="/:login" element={<ProfilePage />} />
       <Route
-        path="/organizations/:org/repositories"
-        element={<RepositoryPage />}
+        path="/:login/repositories"
+        element={<RepositoriesPage />}
       />
+      <Route path="/:login/report" element={<ReportPage />} />
+      <Route
+        path="/:login/organizations"
+        element={<OrganizationsPage />}
+      />
+      <Route path="/:login/:repo" element={<RepositoryPage />} />
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

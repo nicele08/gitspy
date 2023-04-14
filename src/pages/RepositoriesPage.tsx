@@ -1,5 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import {
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 
 import { useAuth } from '@/components/contexts/AuthContext';
 import DashboardLayout from '@/components/layouts/DashboardLayout';
@@ -10,13 +14,14 @@ import Pagination from '@/components/shared/Pagination';
 
 const RepositoriesPage = () => {
   const navigate = useNavigate();
+  const { login } = useParams();
   const [searchParams] = useSearchParams();
   const q = searchParams.get('q');
   const handleSearch = useRef(() => {});
   const { profile } = useAuth();
   const initialPage = searchParams.get('page') || '1';
   const [page, setPage] = useState(initialPage);
-  const [query, setQuery] = useState(`q=user:${profile?.login}`);
+  const [query, setQuery] = useState(`q=user:${login}`);
   const {
     data: repos,
     isLoading: loadingRepo,
@@ -27,6 +32,9 @@ const RepositoriesPage = () => {
   );
 
   handleSearch.current = () => {
+    if (initialPage) {
+      setPage(initialPage);
+    }
     if (q) {
       const repoResults: any[] =
         repos?.items?.filter((item: any) => item.name.includes(q)) ||
@@ -41,20 +49,14 @@ const RepositoriesPage = () => {
         );
       } else if (!loadingRepo) {
         // TODO: handle no results
-        setQuery(`q=${q.trim()}+user:${profile?.login}`);
+        setQuery(`q=${q.trim()}+user:${login}`);
         // mutate(repos, { revalidate: true });
       }
     } else {
-      setQuery(`q=user:${profile?.login}`);
+      setQuery(`q=user:${login}`);
       // mutate(repos, { revalidate: true });
     }
   };
-
-  useEffect(() => {
-    if (initialPage) {
-      setPage(initialPage);
-    }
-  }, [initialPage]);
 
   useEffect(() => {
     handleSearch.current();
@@ -89,7 +91,11 @@ const RepositoriesPage = () => {
             }
             onPageChange={newPage => {
               setPage(newPage.toString());
-              navigate(`?page=${newPage}&q=${q}`);
+              let pageQuery = `?page=${newPage}`;
+              if (q) {
+                pageQuery += `&q=${q}`;
+              }
+              navigate(pageQuery);
             }}
           />
         </div>
