@@ -1,7 +1,10 @@
+import { Link, useParams } from 'react-router-dom';
+
 import { RepoCardProps } from '@/types/github/repo';
 
 const RepoCard = ({ data }: { data: RepoCardProps }) => {
-  const { name, description, owner, html_url: htmlUrl } = data;
+  const { name, description, owner } = data;
+  const { login } = useParams();
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
       <div className="p-4">
@@ -25,14 +28,12 @@ const RepoCard = ({ data }: { data: RepoCardProps }) => {
               {owner.login}
             </a>
           </div>
-          <a
-            href={htmlUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to={`/${login}/${name}`}
             className="whitespace-nowrap bg-blue-500 hover:bg-blue-600 text-white text-xs font-medium py-1 lg:py-2 px-2 lg:px-4 rounded"
           >
-            View on GitHub
-          </a>
+            View Repo
+          </Link>
         </div>
       </div>
     </div>

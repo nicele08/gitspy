@@ -16,7 +16,7 @@ const OrganizationCard = ({
   } = data;
   return (
     <Link
-      to={`/organizations/${login}/repositories`}
+      to={`/${login}/repositories`}
       className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md"
     >
       <div className="p-4">

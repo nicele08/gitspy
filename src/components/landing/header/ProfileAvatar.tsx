@@ -3,8 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 import { IProfile } from '@/types/user/profile';
 
-const ProfileAvatar = ({ profile }: { profile: IProfile }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const ProfileAvatar = ({
+  profile,
+  hovered = false,
+}: {
+  profile: IProfile;
+  hovered?: boolean;
+}) => {
+  const [isHovered, setIsHovered] = useState(hovered);
 
   return (
     <div
@@ -34,13 +40,13 @@ const ProfileAvatar = ({ profile }: { profile: IProfile }) => {
             Dashboard
           </NavLink>
           <NavLink
-            to="/organization"
+            to={`/${profile.login}/organizations`}
             className="py-2 px-4 text-black dark:text-white no-underline hover:bg-gray-200  transition-all duration-300 dark:hover:bg-gray-700"
           >
             Organizations
           </NavLink>
           <NavLink
-            to="/repositories"
+            to={`/${profile.login}/repositories`}
             className="py-2 px-4 text-black dark:text-white no-underline hover:bg-gray-200  transition-all duration-300 dark:hover:bg-gray-700"
           >
             Repositories

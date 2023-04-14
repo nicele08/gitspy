@@ -33,19 +33,15 @@ const DashboardNavigationMenu = ({
     });
   };
 
-  let navigationItems = navItems;
-
-  if (profile) {
-    navigationItems = navItems.map(item => {
-      if (item.name === 'Dashboard') {
-        return {
-          ...item,
-          href: `/${profile.login}`,
-        };
-      }
-      return item;
-    });
-  }
+  const navigationItems = navItems.map(item => {
+    if (item.isPrefix && profile) {
+      return {
+        ...item,
+        href: `/${profile.login}${item.href}`,
+      };
+    }
+    return item;
+  });
 
   return (
     <div

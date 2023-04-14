@@ -3,11 +3,13 @@ import { FiSearch } from 'react-icons/fi';
 import {
   useLocation,
   useNavigate,
+  useParams,
   useSearchParams,
 } from 'react-router-dom';
 
-const SearchBar = ({ onSubmit = (search: string) => {} }) => {
+const SearchBar = () => {
   const [searchParams] = useSearchParams();
+  const { login } = useParams();
   const q = searchParams.get('q');
   const [searchText, setSearchText] = useState(q || '');
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ const SearchBar = ({ onSubmit = (search: string) => {} }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!searchText.trim()) return;
-    onSubmit(searchText);
+    navigate(`/${login}/repositories?q=${q}`);
   };
 
   return (
