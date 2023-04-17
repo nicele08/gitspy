@@ -6,6 +6,7 @@ import MainLayout from '@/components/layouts/MainLayout';
 const GitSpyLoader = () => {
   return (
     <MainLayout>
+      <p className="sr-only">Loading...</p>
       <div className="w-full px-4 md:px-8 py-3 flex flex-col space-y-4">
         <div className="w-full flex items-center space-x-4 mb-8">
           <SkeletonElement className="rounded-full h-12 w-12" />

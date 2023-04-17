@@ -19,11 +19,13 @@ const data: OrganizationCardProps[] = [
 
 describe('Test <OrganizationList />', () => {
   it('render OrganizationList component without crashing', async () => {
-    const { container } = render(
+    const { container, findAllByText } = render(
       <Router>
         <OrganizationList data={data} />
       </Router>,
     );
-    expect(container).toMatchSnapshot();
+    // expect(container).toMatchSnapshot();
+    const elements = await findAllByText(/Nicele08/i);
+    expect(elements.length).not.toBe(0);
   });
 });

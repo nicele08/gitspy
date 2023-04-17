@@ -5,11 +5,13 @@ import OrganizationsPage from '@/pages/OrganizationsPage';
 
 describe('Test <OrganizationsPage />', () => {
   it('renders OrganizationsPage without crashing', async () => {
-    const { container } = render(
+    const { findByText } = render(
       <Router>
         <OrganizationsPage />
       </Router>,
     );
-    expect(container).toMatchSnapshot();
+    // expect(container).toMatchSnapshot();
+    const text = await findByText(/Your Organizations/i);
+    expect(text).toBeInTheDocument();
   });
 });

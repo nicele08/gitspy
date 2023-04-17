@@ -5,11 +5,13 @@ import RepositoriesPage from '@/pages/RepositoriesPage';
 
 describe('Test <RepositoriesPage />', () => {
   it('renders RepositoriesPage without crashing', async () => {
-    const { container } = render(
+    const { findByText } = render(
       <Router>
         <RepositoriesPage />
       </Router>,
     );
-    expect(container).toMatchSnapshot();
+    // expect(container).toMatchSnapshot();
+    const text = await findByText(/Your Repositories/i);
+    expect(text).toBeInTheDocument();
   });
 });

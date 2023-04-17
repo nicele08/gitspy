@@ -17,7 +17,12 @@ const DataLayout = ({
     window.location.reload();
   };
   if (isLoading) {
-    return <div className="flex flex-col">{loader}</div>;
+    return (
+      <div className="flex flex-col">
+        <p className="sr-only">Loading...</p>
+        {loader}
+      </div>
+    );
   }
   if (isError) {
     const error = isError.response?.data || isError;
