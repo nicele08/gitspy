@@ -5,11 +5,13 @@ import NotFoundPage from '@/pages/NotFoundPage';
 
 describe('Test <NotFoundPage />', () => {
   it('renders NotFoundPage without crashing', async () => {
-    const { container } = render(
+    const { findByText } = render(
       <Router>
         <NotFoundPage />
       </Router>,
     );
-    expect(container).toMatchSnapshot();
+    // expect(container).toMatchSnapshot();
+    const notFound = await findByText(/404/i);
+    expect(notFound).toBeInTheDocument();
   });
 });

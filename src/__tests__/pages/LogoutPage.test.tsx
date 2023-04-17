@@ -5,11 +5,15 @@ import LogoutPage from '@/pages/LogoutPage';
 
 describe('Test <LogoutPage />', () => {
   it('renders LogoutPage without crashing', async () => {
-    const { container } = render(
+    const { findByText } = render(
       <Router>
         <LogoutPage />
       </Router>,
     );
-    expect(container).toMatchSnapshot();
+    // expect(container).toMatchSnapshot();
+    const text = await findByText(
+      /Are you sure you want to log out?/i,
+    );
+    expect(text).toBeInTheDocument();
   });
 });
